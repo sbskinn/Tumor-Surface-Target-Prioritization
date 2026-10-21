@@ -10,11 +10,12 @@ Skyler Skinner
 Nadia Alexander
 
 
-## Project objective
+## Project Objective
 
 Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
 
-## Datasets used
+## Public Data Access Log
+This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
 
 Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
 
@@ -24,9 +25,22 @@ Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allDat
 
 Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
 
-## Data dictionaries
+## Environment Setup 
+This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
 
-### 1. Source dictionary
+The following libraries and platforms are required to run the notebook:
+- Anaconda (Preferred for downloading python libraries)
+- Python
+- Jupyter Notebook
+- pandas
+- Pathlib
+- Tarfile
+- Scikit-learn
+- json
+
+## Data Dictionaries
+
+### 1. Source Dictionary
 
 | Source/file | Purpose | Data used | File status |
 | --- | --- | --- | --- |
@@ -37,7 +51,7 @@ Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations
 | `subcellular_location.tsv` | Human Protein Atlas localization source | Identify surface-eligible genes using plasma-membrane annotations | Loaded |
 | `LUAD_expression_features.csv` | Derived feature table | Gene-level expression and variability features | Loaded |
 
-### 2. Gene/label dictionary
+### 2. Gene/Label Dictionary
 
 | Field | Role | Type | Definition | Status |
 | --- | --- | --- | --- | --- |
@@ -53,7 +67,7 @@ Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations
 | `valid_chronos_count` | Label eligibility metadata | Integer | Number of non-missing Chronos measurements among matched LUAD cell lines | Defined |
 | `label_status` | Label eligibility metadata | Categorical | Indicates whether a gene receives a label; labeled when `valid_chronos_count >= 3` | Defined |
 
-### 3. Split dictionary
+### 3. Split Dictionary
 
 | Variable | Current value or definition |
 | --- | --- |
@@ -76,3 +90,30 @@ Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations
 | `preprocessing_rule` | Fit preprocessing steps on training data only, then apply them unchanged to validation and test data |
 | `subgroup_evaluation` | Evaluate performance overall and for `surface_level == True` genes |
 | `candidate_goal` | Evaluate and rank 20 surface-level candidates from the held-out test set |
+
+
+## Practical Start Evidence
+
+Planned Sections:
+- Load public expression, copy-number, and dependency data
+- Clean and merge datasets into one row per gene
+- Create input feature matrix X and dependency target y
+- Validation and test-splits
+- Train the constant and ridge baselines 
+- Compare models with MAE and Spearman correlation
+
+## Evaluation Plan
+- 70/15/15 split
+  - 70% training
+  - 15% validation
+  - 15% testing
+- 2000 labeled genes
+  - Training: 1400 genes 
+  - Validation: 300 genes
+  - Testing: 300 genes
+- Evaluate predictions with MAE and Spearman Correlation both overall and for surface candidates
+- Surface-Stratified Splits: keep representation of surface-eligible genes across each section (training, validation, and testing)
+- 20 test surface candidates: show the evaluation of 20 surface candidates
+- Plan one model improvement and compare with and without amplification features
+
+
