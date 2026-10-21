@@ -1,16 +1,28 @@
 # Tumor-Surface-Target-Prioritization
 
+## Team Members
+Caroline Nutter
+
+Joanna Land 
+
+Skyler Skinner
+
+Nadia Alexander
+
+
 ## Project objective
 
-Predict gene dependency in lung adenocarcinoma (LUAD) from publicly available
-gene-level features.
+Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
 
 ## Datasets used
 
-Link 1:
-Link 2:
-Link 3:
-Link 4:
+Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
+
+Link 2: https://www.cbioportal.org/study/summary?id=luad_tcga&utm_source 
+
+Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allData 
+
+Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
 
 ## Data dictionaries
 
