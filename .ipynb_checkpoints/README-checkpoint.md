@@ -12,18 +12,34 @@ Nadia Alexander
 
 ## Project Objective
 
-Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
+1. Reproduced the public paper analysis from "TROP2 targeting reveals therapy-driven cell state dynamics in colorectal cancer."
+2. Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
 
-## Public Data Access Log
-This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
+## GitHub Repository Link
+Repository URL: https://github.com/sbskinn/Tumor-Surface-Target-Prioritization
+GitHub Hash: [insert hash]
+This repository is public.
 
-Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
-
-Link 2: https://www.cbioportal.org/study/summary?id=luad_tcga&utm_source 
-
-Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allData 
-
-Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
+## Repository and ZIP file layout / location
+Tumor-Surface-Target-Prioritization/
+├── README.md
+├── requirements.txt
+├── Checkpoint_1/
+│   ├── Checkpoin1_gene_expression.ipynb    builds gene table, labels, splits
+    ├── Checkpoint1_gradient_boosting_model.ipynb
+    ├── Checkpoint1_ridge_model.ipynb
+    ├── CPSC 4430 Checkpoint 1 Paper.pdf
+    ├──CPSC6430_T4_Checkpoint1.pptx
+├── Checkpoint_2/
+│   ├── Checkpoint2_model_reproduction.ipynb   paper reproduction
+│   ├── reproduced_results/                    images of reproduction figures
+│   ├── model_reproduction_data/               large txt input files 
+│   ├── Checkpoint2_model_evaluation.ipynb          training, evaluation, splits, models, metrics
+│   └── top20_surface_genes/                   held-out surface-candidate ranking
+└── submission/  (ZIP root)
+    ├── Checkpoint 2 Paper.pdf
+    ├── Checkpoint2 Presentation.pptx)
+    └── execution_video.mp4
 
 ## Environment Setup 
 This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
@@ -37,6 +53,17 @@ The following libraries and platforms are required to run the notebook:
 - Tarfile
 - Scikit-learn
 - json
+  
+## Public Data Access Log
+This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
+
+Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
+
+Link 2: https://www.cbioportal.org/study/summary?id=luad_tcga&utm_source 
+
+Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allData 
+
+Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
 
 ## Data Dictionaries
 
@@ -50,6 +77,13 @@ The following libraries and platforms are required to run the notebook:
 | `DepMapModel.csv` | DepMap cell-line metadata | Identify and filter matched LUAD cell lines | Loaded |
 | `subcellular_location.tsv` | Human Protein Atlas localization source | Identify surface-eligible genes using plasma-membrane annotations | Loaded |
 | `LUAD_expression_features.csv` | Derived feature table | Gene-level expression and variability features | Loaded |
+
+## Add
+Release information (ADD): DepMap release name, TCGA/Xena version, HPA version, and download dates
+Reproduction data (ADD): ArrayExpress E-MTAB-16585 biobank_subcut_epi_* files (log1p, counts, metadata, UMAP, features), with the download link and file sizes (about 1.3 GB and 1.1 GB)
+Where to place the files: the exact folder name and path setting (DATA_DIR) the notebook uses
+Trained models: where they are in the repo, or a download link
+Example input (ADD): a small sample file for a quick test, and a note that the large files are not in the repo because of GitHub’s 100 MB limit
 
 ### 2. Gene/Label Dictionary
 
@@ -91,9 +125,6 @@ The following libraries and platforms are required to run the notebook:
 | `subgroup_evaluation` | Evaluate performance overall and for `surface_level == True` genes |
 | `candidate_goal` | Evaluate and rank 20 surface-level candidates from the held-out test set |
 
-
-## Practical Start Evidence
-
 Planned Sections:
 - Load public expression, copy-number, and dependency data
 - Clean and merge datasets into one row per gene
@@ -115,5 +146,19 @@ Planned Sections:
 - Surface-Stratified Splits: keep representation of surface-eligible genes across each section (training, validation, and testing)
 - 20 test surface candidates: show the evaluation of 20 surface candidates
 - Plan one model improvement and compare with and without amplification features
+
+## Methods Summary
+
+## How to run:
+
+## Expected Output:
+
+## Run Time:
+
+## Known Limitations:
+
+## Practical Start Evidence
+
+## References
 
 

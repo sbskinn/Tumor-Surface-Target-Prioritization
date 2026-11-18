@@ -16,16 +16,30 @@ Nadia Alexander
 2. Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
 
 ## GitHub Repository Link
-
-https://github.com/sbskinn/Tumor-Surface-Target-Prioritization
+Repository URL: https://github.com/sbskinn/Tumor-Surface-Target-Prioritization
+GitHub Hash: [insert hash]
+This repository is public.
 
 ## Repository and ZIP file layout / location
-1. Paper reproduction code: Checkpoint_2/model_reproduction_data, Checkpoint_2/reproduced_results, Checkpoint_2/Checkpoint2_model_reproduction
-2. Prediction, training, and evaluation code: Checkpoint_2/Checkpoint2_model_evaluation
-3. Split manifests and configurations: Checkpoint_2/Checkpoint2_model_evaluation
-4. Trained models/checkpoints: Checkpoint_2/Checkpoint2_model_evaluation
-5. Results, figures, candidate rankings: Checkpoint_2/Checkpoint2_model_evaluation, Checkpoint_2/top20_surface_genes
-6. Report, slides, video: 
+Tumor-Surface-Target-Prioritization/
+├── README.md
+├── requirements.txt
+├── Checkpoint_1/
+│   ├── Checkpoin1_gene_expression.ipynb    builds gene table, labels, splits
+    ├── Checkpoint1_gradient_boosting_model.ipynb
+    ├── Checkpoint1_ridge_model.ipynb
+    ├── CPSC 4430 Checkpoint 1 Paper.pdf
+    ├──CPSC6430_T4_Checkpoint1.pptx
+├── Checkpoint_2/
+│   ├── Checkpoint2_model_reproduction.ipynb   paper reproduction
+│   ├── reproduced_results/                    images of reproduction figures
+│   ├── model_reproduction_data/               large txt input files 
+│   ├── Checkpoint2_model_evaluation.ipynb          training, evaluation, splits, models, metrics
+│   └── top20_surface_genes/                   held-out surface-candidate ranking
+└── submission/  (ZIP root)
+    ├── Checkpoint 2 Paper.pdf
+    ├── Checkpoint2 Presentation.pptx)
+    └── execution_video.mp4
 
 ## Environment Setup 
 This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
@@ -63,6 +77,13 @@ Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations
 | `DepMapModel.csv` | DepMap cell-line metadata | Identify and filter matched LUAD cell lines | Loaded |
 | `subcellular_location.tsv` | Human Protein Atlas localization source | Identify surface-eligible genes using plasma-membrane annotations | Loaded |
 | `LUAD_expression_features.csv` | Derived feature table | Gene-level expression and variability features | Loaded |
+
+## Add
+Release information (ADD): DepMap release name, TCGA/Xena version, HPA version, and download dates
+Reproduction data (ADD): ArrayExpress E-MTAB-16585 biobank_subcut_epi_* files (log1p, counts, metadata, UMAP, features), with the download link and file sizes (about 1.3 GB and 1.1 GB)
+Where to place the files: the exact folder name and path setting (DATA_DIR) the notebook uses
+Trained models: where they are in the repo, or a download link
+Example input (ADD): a small sample file for a quick test, and a note that the large files are not in the repo because of GitHub’s 100 MB limit
 
 ### 2. Gene/Label Dictionary
 
@@ -104,9 +125,6 @@ Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations
 | `subgroup_evaluation` | Evaluate performance overall and for `surface_level == True` genes |
 | `candidate_goal` | Evaluate and rank 20 surface-level candidates from the held-out test set |
 
-
-## Practical Start Evidence
-
 Planned Sections:
 - Load public expression, copy-number, and dependency data
 - Clean and merge datasets into one row per gene
@@ -128,5 +146,19 @@ Planned Sections:
 - Surface-Stratified Splits: keep representation of surface-eligible genes across each section (training, validation, and testing)
 - 20 test surface candidates: show the evaluation of 20 surface candidates
 - Plan one model improvement and compare with and without amplification features
+
+## Methods Summary
+
+## How to run:
+
+## Expected Output:
+
+## Run Time:
+
+## Known Limitations:
+
+## Practical Start Evidence
+
+## References
 
 
