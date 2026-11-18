@@ -65,6 +65,8 @@ Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allDat
 
 Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
 
+Link 5 (reproduced data: E-MTAB-1685): https://www.nature.com/articles/s41586-026-10705-2#citeas
+
 ## Data Dictionaries
 
 ### 1. Source Dictionary
