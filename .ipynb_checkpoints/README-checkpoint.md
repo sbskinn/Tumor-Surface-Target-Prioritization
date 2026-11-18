@@ -1,0 +1,119 @@
+# Tumor-Surface-Target-Prioritization
+
+## Team Members
+Caroline Nutter
+
+Joanna Land 
+
+Skyler Skinner
+
+Nadia Alexander
+
+
+## Project Objective
+
+Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
+
+## Public Data Access Log
+This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
+
+Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
+
+Link 2: https://www.cbioportal.org/study/summary?id=luad_tcga&utm_source 
+
+Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allData 
+
+Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
+
+## Environment Setup 
+This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
+
+The following libraries and platforms are required to run the notebook:
+- Anaconda (Preferred for downloading python libraries)
+- Python
+- Jupyter Notebook
+- pandas
+- Pathlib
+- Tarfile
+- Scikit-learn
+- json
+
+## Data Dictionaries
+
+### 1. Source Dictionary
+
+| Source/file | Purpose | Data used | File status |
+| --- | --- | --- | --- |
+| `TCGA.LUAD.sampleMap_HiSeqV2.gz` | TCGA LUAD gene expression | Expression values across LUAD samples | Loaded |
+| `luad_tcga.tar.gz` | Gene-level copy-number data | CNA/GISTIC calls used to calculate amplification | Loaded |
+| `CRISPRGeneEffect.csv` | DepMap Chronos dependency source | Gene-effect scores for cancer cell lines | Loaded |
+| `DepMapModel.csv` | DepMap cell-line metadata | Identify and filter matched LUAD cell lines | Loaded |
+| `subcellular_location.tsv` | Human Protein Atlas localization source | Identify surface-eligible genes using plasma-membrane annotations | Loaded |
+| `LUAD_expression_features.csv` | Derived feature table | Gene-level expression and variability features | Loaded |
+
+### 2. Gene/Label Dictionary
+
+| Field | Role | Type | Definition | Status |
+| --- | --- | --- | --- | --- |
+| `gene` | Identifier | String | HGNC-style gene symbol used to align expression, CNA, DepMap, and HPA records | Defined |
+| `expression` | Predictor | Numeric | Mean expression across the currently included TCGA LUAD samples; the source may contain both tumor and normal samples | Defined |
+| `variability` | Predictor | Numeric | Sample standard deviation of expression across the included TCGA LUAD samples; currently stored as `expression_variability` | Defined |
+| `amplification` | Predictor | Numeric | Number of CNA sample calls equal to 2 divided by the number of non-missing calls for each gene | Defined |
+| `enrichment` | Predictor | Numeric | Mean tumor expression minus mean normal expression; positive values indicate higher average expression in tumor samples | Defined |
+| `surface_level` | Eligibility metadata | Boolean | `True` when the gene symbol appears in HPA records with `Plasma membrane` | Defined |
+| `chronos_effect_median` | Intermediate label | Numeric | Median DepMap Chronos effect across matched LUAD cell lines | Defined |
+| `dependency_score` | Target label | Numeric | Negative median Chronos effect: `-median(Chronos effect)`; larger values indicate stronger dependency under this convention | Defined |
+| `predicted_dependency` | Model output | Numeric | Dependency score predicted by a fitted regression model | Defined |
+| `valid_chronos_count` | Label eligibility metadata | Integer | Number of non-missing Chronos measurements among matched LUAD cell lines | Defined |
+| `label_status` | Label eligibility metadata | Categorical | Indicates whether a gene receives a label; labeled when `valid_chronos_count >= 3` | Defined |
+
+### 3. Split Dictionary
+
+| Variable | Current value or definition |
+| --- | --- |
+| `split_unit` | Gene; each gene appears in exactly one partition |
+| `target_variable` | `dependency_score` |
+| `requested_total_genes` | 2,000 labeled genes |
+| `training_proportion` | 0.70 (70%) |
+| `validation_proportion` | 0.15 (15%) |
+| `test_proportion` | 0.15 (15%) |
+| `random_state` | 42 |
+| `stratification_variable` | `surface_level` |
+| `training_size` | 1,400 genes |
+| `validation_size` | 300 genes |
+| `test_size` | 300 genes |
+| `training_surface_count` | 175 |
+| `validation_surface_count` | 38 |
+| `test_surface_count` | 37 |
+| `saved_split_file` | `gene_splits.json` |
+| `overlap_check` | Verify that no gene occurs in more than one split |
+| `preprocessing_rule` | Fit preprocessing steps on training data only, then apply them unchanged to validation and test data |
+| `subgroup_evaluation` | Evaluate performance overall and for `surface_level == True` genes |
+| `candidate_goal` | Evaluate and rank 20 surface-level candidates from the held-out test set |
+
+
+## Practical Start Evidence
+
+Planned Sections:
+- Load public expression, copy-number, and dependency data
+- Clean and merge datasets into one row per gene
+- Create input feature matrix X and dependency target y
+- Validation and test-splits
+- Train the constant and ridge baselines 
+- Compare models with MAE and Spearman correlation
+
+## Evaluation Plan
+- 70/15/15 split
+  - 70% training
+  - 15% validation
+  - 15% testing
+- 2000 labeled genes
+  - Training: 1400 genes 
+  - Validation: 300 genes
+  - Testing: 300 genes
+- Evaluate predictions with MAE and Spearman Correlation both overall and for surface candidates
+- Surface-Stratified Splits: keep representation of surface-eligible genes across each section (training, validation, and testing)
+- 20 test surface candidates: show the evaluation of 20 surface candidates
+- Plan one model improvement and compare with and without amplification features
+
+
