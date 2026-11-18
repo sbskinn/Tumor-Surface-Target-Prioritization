@@ -33,7 +33,7 @@ Tumor-Surface-Target-Prioritization/
 ├── Checkpoint_2/
 │   ├── Checkpoint2_model_reproduction.ipynb   paper reproduction
 │   ├── reproduced_results/                    images of reproduction figures
-│   ├── model_reproduction_data/               large txt input files 
+│   ├── model_reproduction_data/               large txt input files and provided python notebook
 │   ├── Checkpoint2_model_evaluation.ipynb          training, evaluation, splits, models, metrics
 │   └── top20_surface_genes/                   held-out surface-candidate ranking
 └── submission/  (ZIP root)
@@ -55,7 +55,7 @@ The following libraries and platforms are required to run the notebook:
 - json
   
 ## Public Data Access Log
-This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
+This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebooks. 
 
 Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
 
@@ -142,16 +142,11 @@ Planned Sections:
 
 ## Methods Summary:
 
-## How to run:
-
 ## Expected Output:
 
 ## Run Time:
 
 ## Known Limitations:
 
-## Practical Start Evidence
-
-## References
 
 
