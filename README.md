@@ -20,13 +20,12 @@ Nadia Alexander
 https://github.com/sbskinn/Tumor-Surface-Target-Prioritization
 
 ## Repository and ZIP file layout / location
-1. Paper reproduction code:
-2. Prediction, training, and evaluation code:
-3. Dependency file:
-4. Split manifests and configurations:
-5. Trained models/checkpoints:
-6. Results, figures, candidate rankings:
-7. Report, slides, video:
+1. Paper reproduction code: Checkpoint_2/model_reproduction_data, Checkpoint_2/reproduced_results, Checkpoint_2/Checkpoint2_model_reproduction
+2. Prediction, training, and evaluation code: Checkpoint_2/Checkpoint2_model_evaluation
+3. Split manifests and configurations: Checkpoint_2/Checkpoint2_model_evaluation
+4. Trained models/checkpoints: Checkpoint_2/Checkpoint2_model_evaluation
+5. Results, figures, candidate rankings: Checkpoint_2/Checkpoint2_model_evaluation, Checkpoint_2/top20_surface_genes
+6. Report, slides, video: 
 
 ## Environment Setup 
 This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
