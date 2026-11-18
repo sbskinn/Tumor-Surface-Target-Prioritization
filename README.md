@@ -78,13 +78,6 @@ Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations
 | `subcellular_location.tsv` | Human Protein Atlas localization source | Identify surface-eligible genes using plasma-membrane annotations | Loaded |
 | `LUAD_expression_features.csv` | Derived feature table | Gene-level expression and variability features | Loaded |
 
-## Add
-Release information (ADD): DepMap release name, TCGA/Xena version, HPA version, and download dates
-Reproduction data (ADD): ArrayExpress E-MTAB-16585 biobank_subcut_epi_* files (log1p, counts, metadata, UMAP, features), with the download link and file sizes (about 1.3 GB and 1.1 GB)
-Where to place the files: the exact folder name and path setting (DATA_DIR) the notebook uses
-Trained models: where they are in the repo, or a download link
-Example input (ADD): a small sample file for a quick test, and a note that the large files are not in the repo because of GitHub’s 100 MB limit
-
 ### 2. Gene/Label Dictionary
 
 | Field | Role | Type | Definition | Status |
@@ -147,7 +140,7 @@ Planned Sections:
 - 20 test surface candidates: show the evaluation of 20 surface candidates
 - Plan one model improvement and compare with and without amplification features
 
-## Methods Summary
+## Methods Summary:
 
 ## How to run:
 
