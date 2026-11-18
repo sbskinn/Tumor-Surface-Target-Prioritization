@@ -12,18 +12,21 @@ Nadia Alexander
 
 ## Project Objective
 
-Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
+1. Reproduced the public paper analysis from "TROP2 targeting reveals therapy-driven cell state dynamics in colorectal cancer."
+2. Predict gene dependency in Lung adenocarcinoma (LUAD) using publicly available data by training supervised regression models.
 
-## Public Data Access Log
-This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
+## GitHub Repository Link
 
-Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
+https://github.com/sbskinn/Tumor-Surface-Target-Prioritization
 
-Link 2: https://www.cbioportal.org/study/summary?id=luad_tcga&utm_source 
-
-Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allData 
-
-Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
+## Repository and ZIP file layout / location
+1. Paper reproduction code:
+2. Prediction, training, and evaluation code:
+3. Dependency file:
+4. Split manifests and configurations:
+5. Trained models/checkpoints:
+6. Results, figures, candidate rankings:
+7. Report, slides, video:
 
 ## Environment Setup 
 This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
@@ -37,6 +40,17 @@ The following libraries and platforms are required to run the notebook:
 - Tarfile
 - Scikit-learn
 - json
+  
+## Public Data Access Log
+This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
+
+Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
+
+Link 2: https://www.cbioportal.org/study/summary?id=luad_tcga&utm_source 
+
+Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allData 
+
+Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
 
 ## Data Dictionaries
 
