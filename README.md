@@ -83,7 +83,7 @@ The following libraries and platforms are required to run the notebook:
 - json
 
 ## Video Demonstration
-https://drive.google.com/file/d/1g9J9SCTpqyrAEpJL_EBnHXkn63rYFqQM/view?usp=sharing
+https://drive.google.com/file/d/12emhxxqf0yqxk-Kx6YO2I1A1biKdQyE8/view?usp=sharing
   
 ## Public Data Access Log
 This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebooks. 
@@ -188,6 +188,7 @@ The expected output is that gradient boosting has the best Spearman correlation.
 | Surface Spearman Correlation | 0.2913 |
 
 ## Run Time:
+4:57 (4 minutes and 57 seconds) 
 
 ## Known Limitations:
 - Four features were used to predict gene dependency which won't fully capture the biological complexity of cancer cell growth
