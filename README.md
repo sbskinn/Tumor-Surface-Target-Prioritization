@@ -20,26 +20,33 @@ Repository URL: https://github.com/sbskinn/Tumor-Surface-Target-Prioritization
 GitHub Hash: [insert hash]
 This repository is public.
 
-## Repository and ZIP file layout / location
+## Repository and ZIP File Layout / Location
+
+The repository is organized into the following directories:
+
+```text
 Tumor-Surface-Target-Prioritization/
 ├── README.md
 ├── requirements.txt
 ├── Checkpoint_1/
-│   ├── Checkpoin1_gene_expression.ipynb    builds gene table, labels, splits
-    ├── Checkpoint1_gradient_boosting_model.ipynb
-    ├── Checkpoint1_ridge_model.ipynb
-    ├── CPSC 4430 Checkpoint 1 Paper.pdf
-    ├──CPSC6430_T4_Checkpoint1.pptx
+│   ├── Checkpoin1_gene_expression.ipynb       # builds gene table, labels, and splits
+│   ├── Checkpoint1_gradient_boosting_model.ipynb
+│   ├── Checkpoint1_ridge_model.ipynb
+│   ├── CPSC 4430 Checkpoint 1 Paper.pdf
+│   └── CPSC6430_T4_Checkpoint1.pptx
+│
 ├── Checkpoint_2/
-│   ├── Checkpoint2_model_reproduction.ipynb   paper reproduction
-│   ├── reproduced_results/                    images of reproduction figures
-│   ├── model_reproduction_data/               large txt input files and provided python notebook
-│   ├── Checkpoint2_model_evaluation.ipynb          training, evaluation, splits, models, metrics
-│   └── top20_surface_genes/                   held-out surface-candidate ranking
-└── submission/  (ZIP root)
+│   ├── Checkpoint2_model_reproduction.ipynb   # paper reproduction
+│   ├── reproduced_results/                    # images of reproduction figures
+│   ├── model_reproduction_data/               # large txt input files and provided python notebook
+│   ├── Checkpoint2_model_evaluation.ipynb     # training, evaluation, splits, models, metrics
+│   └── top20_surface_genes/                   # held-out surface-candidate ranking
+│
+└── submission/ (ZIP root)                     # ZIP submission contents
     ├── Checkpoint 2 Paper.pdf
-    ├── Checkpoint2 Presentation.pptx)
+    ├── Checkpoint2 Presentation.pptx
     └── execution_video.mp4
+```
 
 ## Environment Setup 
 This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
@@ -53,6 +60,9 @@ The following libraries and platforms are required to run the notebook:
 - Tarfile
 - Scikit-learn
 - json
+
+## Video Demonstration
+https://drive.google.com/file/d/1g9J9SCTpqyrAEpJL_EBnHXkn63rYFqQM/view?usp=sharing
   
 ## Public Data Access Log
 This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebooks. 
