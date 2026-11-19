@@ -24,6 +24,7 @@ This repository is public.
 
 The repository is organized into the following directories:
 
+
 ```text
 Tumor-Surface-Target-Prioritization/
 ├── README.md
@@ -38,7 +39,27 @@ Tumor-Surface-Target-Prioritization/
 ├── Checkpoint_2/
 │   ├── Checkpoint2_model_reproduction.ipynb   # paper reproduction
 │   ├── reproduced_results/                    # images of reproduction figures
+│   │   ├── cell_state_proportions_table.png
+│   │   ├── donor_proportions_stacked_bar.png
+│   │   ├── gene_expression_table.png
+│   │   ├── umap_expression_and_clusters.png
+│   │   └── violin_expression_by_state.png
 │   ├── model_reproduction_data/               # large txt input files and provided python notebook
+│   │   ├── biobank_subcut_epi_counts.txt
+│   │   ├── biobank_subcut_epi_counts_log1p.txt
+│   │   ├── biobank_subcut_epi_features.txt
+│   │   ├── biobank_subcut_epi_metadata.txt
+│   │   ├── biobank_subcut_epi_umap.txt
+│   │   ├── biobank_subcut_full_counts.txt
+│   │   ├── biobank_subcut_full_counts_log1p.txt
+│   │   ├── biobank_subcut_full_features.txt
+│   │   ├── biobank_subcut_full_metadata.txt
+│   │   ├── biobank_subcut_full_umap.txt
+│   │   ├── E-MTAB-16585.idf.txt
+│   │   ├── E-MTAB-16585.sdrf.txt
+│   │   ├── get_data_from_arrayExpress.ipynb
+│   │   ├── HTO_library.txt
+│   │   └── sample_metadata.txt
 │   ├── Checkpoint2_model_evaluation.ipynb     # training, evaluation, splits, models, metrics
 │   └── top20_surface_genes/                   # held-out surface-candidate ranking
 │

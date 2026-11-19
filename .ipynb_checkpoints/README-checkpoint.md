@@ -20,26 +20,54 @@ Repository URL: https://github.com/sbskinn/Tumor-Surface-Target-Prioritization
 GitHub Hash: [insert hash]
 This repository is public.
 
-## Repository and ZIP file layout / location
+## Repository and ZIP File Layout / Location
+
+The repository is organized into the following directories:
+
+
+```text
 Tumor-Surface-Target-Prioritization/
 ├── README.md
 ├── requirements.txt
 ├── Checkpoint_1/
-│   ├── Checkpoin1_gene_expression.ipynb    builds gene table, labels, splits
-    ├── Checkpoint1_gradient_boosting_model.ipynb
-    ├── Checkpoint1_ridge_model.ipynb
-    ├── CPSC 4430 Checkpoint 1 Paper.pdf
-    ├──CPSC6430_T4_Checkpoint1.pptx
+│   ├── Checkpoin1_gene_expression.ipynb       # builds gene table, labels, and splits
+│   ├── Checkpoint1_gradient_boosting_model.ipynb
+│   ├── Checkpoint1_ridge_model.ipynb
+│   ├── CPSC 4430 Checkpoint 1 Paper.pdf
+│   └── CPSC6430_T4_Checkpoint1.pptx
+│
 ├── Checkpoint_2/
-│   ├── Checkpoint2_model_reproduction.ipynb   paper reproduction
-│   ├── reproduced_results/                    images of reproduction figures
-│   ├── model_reproduction_data/               large txt input files 
-│   ├── Checkpoint2_model_evaluation.ipynb          training, evaluation, splits, models, metrics
-│   └── top20_surface_genes/                   held-out surface-candidate ranking
-└── submission/  (ZIP root)
+│   ├── Checkpoint2_model_reproduction.ipynb   # paper reproduction
+│   ├── reproduced_results/                    # images of reproduction figures
+│   │   ├── cell_state_proportions_table.png
+│   │   ├── donor_proportions_stacked_bar.png
+│   │   ├── gene_expression_table.png
+│   │   ├── umap_expression_and_clusters.png
+│   │   └── violin_expression_by_state.png
+│   ├── model_reproduction_data/               # large txt input files and provided python notebook
+│   │   ├── biobank_subcut_epi_counts.txt
+│   │   ├── biobank_subcut_epi_counts_log1p.txt
+│   │   ├── biobank_subcut_epi_features.txt
+│   │   ├── biobank_subcut_epi_metadata.txt
+│   │   ├── biobank_subcut_epi_umap.txt
+│   │   ├── biobank_subcut_full_counts.txt
+│   │   ├── biobank_subcut_full_counts_log1p.txt
+│   │   ├── biobank_subcut_full_features.txt
+│   │   ├── biobank_subcut_full_metadata.txt
+│   │   ├── biobank_subcut_full_umap.txt
+│   │   ├── E-MTAB-16585.idf.txt
+│   │   ├── E-MTAB-16585.sdrf.txt
+│   │   ├── get_data_from_arrayExpress.ipynb
+│   │   ├── HTO_library.txt
+│   │   └── sample_metadata.txt
+│   ├── Checkpoint2_model_evaluation.ipynb     # training, evaluation, splits, models, metrics
+│   └── top20_surface_genes/                   # held-out surface-candidate ranking
+│
+└── submission/ (ZIP root)                     # ZIP submission contents
     ├── Checkpoint 2 Paper.pdf
-    ├── Checkpoint2 Presentation.pptx)
+    ├── Checkpoint2 Presentation.pptx
     └── execution_video.mp4
+```
 
 ## Environment Setup 
 This project is developed in Jupyter Notebook. The notebook should be run using a Python environment with the required dependencies installed and access to the project datasets in the expected local directory. 
@@ -53,9 +81,12 @@ The following libraries and platforms are required to run the notebook:
 - Tarfile
 - Scikit-learn
 - json
+
+## Video Demonstration
+https://drive.google.com/file/d/1g9J9SCTpqyrAEpJL_EBnHXkn63rYFqQM/view?usp=sharing
   
 ## Public Data Access Log
-This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebook Checkpoint1_gene_dependency_model.ipynb. 
+This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebooks. 
 
 Link 1: https://xenabrowser.net/datapages/?dataset=TCGA.LUAD.sampleMap%2FHiSeqV2&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443 
 
@@ -64,6 +95,8 @@ Link 2: https://www.cbioportal.org/study/summary?id=luad_tcga&utm_source
 Link 3: https://depmap.org/portal/data_page/?utm_source=tab%3DallData&tab=allData 
 
 Link 4: https://www.proteinatlas.org/humanproteome/subcellular/data#locations 
+
+Link 5 (reproduced data: E-MTAB-1685): https://www.nature.com/articles/s41586-026-10705-2#citeas
 
 ## Data Dictionaries
 
@@ -140,9 +173,11 @@ Planned Sections:
 - 20 test surface candidates: show the evaluation of 20 surface candidates
 - Plan one model improvement and compare with and without amplification features
 
-## Methods Summary:
+## Methods Summary
+These four models were implemented: Constant Baseline, Ridge Regression, Random Forest, and Gradient Boosting. Mean Absolute Error (MAE) and Spearman correlation were both used to evaluate models specifically on surface associated genes. The goal of the project is to rank the top 20 surface associated genes using the chosen model, Gradient Boosting. Four features were used to examine gene expression: expression, enrichment, expression variability, and amplification frequency. To create a ranking for the genes with the highest dependence score for cancer growth (Checkpoint 1), a total of five files were cleaned and merged together to create a dataset with four features and 1 target. The sources of the datasets are titled LUAD_expression_features.csv, luad_tcga.tar.gz, data_cna.txt, CRISPRGeneEffect.csv, subcellular_location.tsv, model.csv were taken from 4 different sources provided in the Github Repository README. These files were processed to create a gene-level dataset containing 2,000 genes, four predictive features, and one target variable. Before implementing each model the data was split into three ways, where 70% of the data was used for training (1,400 genes), 15% for validation (300 genes), and 15% (300 genes) was used to evaluate each model. The training set was used to fit each model, while the validation set was used to compare model performance. The four models were then developed using the training data and improved with the validation data. Each model was developed to prioritize Spearman correlation since our objective was to rank to surface genes. The constant baseline predicted average dependency. Ridge regression replaced blank features with the median and standardized the features. Random forest found that the max tree depth of 5 produced the lowest MAE value. Gradient boosting resulted in the best training Spearman correlation.
 
-## Expected Output:
+## Expected Output
+The expected output is that gradient boosting has the best Spearman correlation. This model was then used to test the test data and the results are...
 
 ## Run Time:
 
