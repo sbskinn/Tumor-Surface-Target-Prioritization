@@ -29,6 +29,8 @@ The repository is organized into the following directories:
 Tumor-Surface-Target-Prioritization/
 ├── README.md
 ├── requirements.txt
+├── Checkpoint 2 Paper - Tumor Surface Target Prioritization Model Evaluation.pdf
+├── Checkpoint 2 Presentation.pdf
 ├── Checkpoint_1/
 │   ├── Checkpoin1_gene_expression.ipynb       # builds gene table, labels, and splits
 │   ├── Checkpoint1_gradient_boosting_model.ipynb
@@ -83,7 +85,7 @@ The following libraries and platforms are required to run the notebook:
 - json
 
 ## Video Demonstration
-https://drive.google.com/file/d/1g9J9SCTpqyrAEpJL_EBnHXkn63rYFqQM/view?usp=sharing
+https://drive.google.com/file/d/12emhxxqf0yqxk-Kx6YO2I1A1biKdQyE8/view?usp=sharing
   
 ## Public Data Access Log
 This project uses publicly available datasets to construct gene-level features, derive LUAD gene-dependency labels, and identify genes associated with plasma-membrane localization. The files are stored locally in the Jupyter notebooks. 
@@ -177,11 +179,24 @@ Planned Sections:
 These four models were implemented: Constant Baseline, Ridge Regression, Random Forest, and Gradient Boosting. Mean Absolute Error (MAE) and Spearman correlation were both used to evaluate models specifically on surface associated genes. The goal of the project is to rank the top 20 surface associated genes using the chosen model, Gradient Boosting. Four features were used to examine gene expression: expression, enrichment, expression variability, and amplification frequency. To create a ranking for the genes with the highest dependence score for cancer growth (Checkpoint 1), a total of five files were cleaned and merged together to create a dataset with four features and 1 target. The sources of the datasets are titled LUAD_expression_features.csv, luad_tcga.tar.gz, data_cna.txt, CRISPRGeneEffect.csv, subcellular_location.tsv, model.csv were taken from 4 different sources provided in the Github Repository README. These files were processed to create a gene-level dataset containing 2,000 genes, four predictive features, and one target variable. Before implementing each model the data was split into three ways, where 70% of the data was used for training (1,400 genes), 15% for validation (300 genes), and 15% (300 genes) was used to evaluate each model. The training set was used to fit each model, while the validation set was used to compare model performance. The four models were then developed using the training data and improved with the validation data. Each model was developed to prioritize Spearman correlation since our objective was to rank to surface genes. The constant baseline predicted average dependency. Ridge regression replaced blank features with the median and standardized the features. Random forest found that the max tree depth of 5 produced the lowest MAE value. Gradient boosting resulted in the best training Spearman correlation.
 
 ## Expected Output
-The expected output is that gradient boosting has the best Spearman correlation. This model was then used to test the test data and the results are...
+The expected output is that gradient boosting has the best Spearman correlation. This model was then used to test the test data and the results are an overall Spearman value of 0.4228, surface Spearman value of 0.2913, overall MAE value of 0.2209, and surface MAE of 0.1850. The overall Spearman correlation of 0.4228 indicates a moderate ability to rank genes based on their dependency scores.
+
+### Gradient Boosting Test Results
+| Subset | Result |
+|---|---:|
+| Overall MAE | 0.2209 |
+| Overall Spearman Correlation | 0.4228 |
+| Surface MAE | 0.1850 |
+| Surface Spearman Correlation | 0.2913 |
 
 ## Run Time:
+4:57 (4 minutes and 57 seconds) 
 
 ## Known Limitations:
+- Four features were used to predict gene dependency which won't fully capture the biological complexity of cancer cell growth
+- Gene expression and amplification data were obtained from TCGA patient samples, while dependency scores came from DepMap cancer cell lines
+- Only 250 out of 2,000 genes in the dataset were surface-associated, with 38 included in the test set
+- Gradient Boosting achieved an overall test Spearman correlation of 0.4228 and a surface-specific Spearman correlation of 0.2913
 
 
 

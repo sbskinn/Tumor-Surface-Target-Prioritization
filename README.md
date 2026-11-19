@@ -29,6 +29,8 @@ The repository is organized into the following directories:
 Tumor-Surface-Target-Prioritization/
 ├── README.md
 ├── requirements.txt
+├── Checkpoint 2 Paper - Tumor Surface Target Prioritization Model Evaluation.pdf
+├── Checkpoint 2 Presentation.pdf
 ├── Checkpoint_1/
 │   ├── Checkpoin1_gene_expression.ipynb       # builds gene table, labels, and splits
 │   ├── Checkpoint1_gradient_boosting_model.ipynb
